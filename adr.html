@@ -1,0 +1,718 @@
+<html><head>
+<script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script><style type="text/css"></style>
+<script src="js/underscore-min.js" type="text/javascript" charset="utf-8"></script>
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/2.3.2/cosmo/bootstrap.min.css" type="text/css" media="screen">
+<script src="js/raphael.2.1.0.min.js" type="text/javascript"></script>
+<script src="js/justgage.1.0.1.min.js" type="text/javascript" media="screen"> </script>
+<link rel="stylesheet" href="styles.css" type="text/css" media="screen">
+<link rel="stylesheet" href="animate.min.css" type="text/css" media="screen">
+<script type="text/javascript" src="jremix.js"></script> 
+<title> Attention Deficit Radio</title>
+</head>
+
+<body>
+
+    <div class="navbar navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="#">Attention Deficit Radio</a>
+            <div id="input-artist" class="input-append">
+                <input id="seed-artist" class="" type="text" placeholder="Enter a seed artist" value=""> 
+                <button class="btn" id="go-radio"> Go </button>
+            </div>
+            <ul id="about" class="nav pull-right">
+              <li> <a href="about.html">About</a> </li>
+            </ul>
+            <ul id="tagline" class="nav pull-right">
+              <li> <a> <i>For when 30 seconds of a song is more than enough</i></a></li>
+            </ul>
+        </div>
+      </div>
+    </div>
+
+
+<div class="container" id="hero">
+    <div id="error"> </div> 
+    <div class="row">
+        <div id="now-playing" class="span6">
+           <!-- <div class='my-gauge' id="beat-gauge"> </div> -->
+           <div class="my-gauge" id="beat-gauge"><svg height="100%" version="1.1" width="100%" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative;"><desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël 2.1.0</desc><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><filter id="beat-gauge-inner-shadow"><feOffset dx="0" dy="3"></feOffset><feGaussianBlur result="offset-blur" stdDeviation="5"></feGaussianBlur><feComposite operator="out" in="SourceGraphic" in2="offset-blur" result="inverse"></feComposite><feFlood flood-color="black" flood-opacity="0.2" result="color"></feFlood><feComposite operator="in" in="color" in2="inverse" result="shadow"></feComposite><feComposite operator="over" in="shadow" in2="SourceGraphic"></feComposite></filter></defs><path fill="#edebeb" stroke="none" d="M106.25,240L50,240A150,150,0,0,1,350,240L293.75,240A93.75,93.75,0,0,0,106.25,240Z" filter="url(#beat-gauge-inner-shadow)" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><path fill="#ff0000" stroke="none" d="M106.25,240L50,240A150,150,0,0,1,350,240L293.75,240A93.75,93.75,0,0,0,106.25,240Z" filter="url(#beat-gauge-inner-shadow)" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="200" y="46.15384615384615" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#999999" font-size="30px" font-weight="bold" font-family="Arial" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: bold; font-size: 30px; line-height: normal; font-family: Arial; fill-opacity: 1;"><tspan dy="10.403846153846153" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Beats</tspan></text><text x="200" y="214.2857142857143" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#010101" font-size="46px" font-weight="bold" font-family="Arial" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: bold; font-size: 46px; line-height: normal; font-family: Arial; fill-opacity: 1;"><tspan dy="15.941964285714306" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">100</tspan></text><text x="200" y="243.7232142857143" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#b3b3b3" font-size="18px" font-weight="normal" font-family="Arial" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-size: 18px; line-height: normal; font-family: Arial; fill-opacity: 1;"><tspan dy="243.7232142857143" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></tspan></text><text x="78.125" y="266.24999999999994" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#b3b3b3" font-size="18px" font-weight="normal" font-family="Arial" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-size: 18px; line-height: normal; font-family: Arial; fill-opacity: 1;"><tspan dy="6.234374999999943" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">0</tspan></text><text x="321.875" y="266.24999999999994" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#b3b3b3" font-size="18px" font-weight="normal" font-family="Arial" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-size: 18px; line-height: normal; font-family: Arial; fill-opacity: 1;"><tspan dy="6.234374999999943" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">100</tspan></text></svg> </div> 
+        </div>
+        <div id="now-playing" class="span6">
+            <div class="my-gauge" id="mix-gauge"><svg height="100%" version="1.1" width="100%" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative;"><desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël 2.1.0</desc><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><filter id="mix-gauge-inner-shadow"><feOffset dx="0" dy="3"></feOffset><feGaussianBlur result="offset-blur" stdDeviation="5"></feGaussianBlur><feComposite operator="out" in="SourceGraphic" in2="offset-blur" result="inverse"></feComposite><feFlood flood-color="black" flood-opacity="0.2" result="color"></feFlood><feComposite operator="in" in="color" in2="inverse" result="shadow"></feComposite><feComposite operator="over" in="shadow" in2="SourceGraphic"></feComposite></filter></defs><path fill="#edebeb" stroke="none" d="M106.25,240L50,240A150,150,0,0,1,350,240L293.75,240A93.75,93.75,0,0,0,106.25,240Z" filter="url(#mix-gauge-inner-shadow)" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><path fill="#00ff00" stroke="none" d="M106.25,240L50,240A150,150,0,0,1,350,240L293.75,240A93.75,93.75,0,0,0,106.25,240Z" filter="url(#mix-gauge-inner-shadow)" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="200" y="46.15384615384615" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#999999" font-size="30px" font-weight="bold" font-family="Arial" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: bold; font-size: 30px; line-height: normal; font-family: Arial; fill-opacity: 1;"><tspan dy="10.403846153846153" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Mix</tspan></text><text x="200" y="214.2857142857143" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#010101" font-size="46px" font-weight="bold" font-family="Arial" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: bold; font-size: 46px; line-height: normal; font-family: Arial; fill-opacity: 1;"><tspan dy="15.941964285714306" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">100</tspan></text><text x="200" y="243.7232142857143" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#b3b3b3" font-size="18px" font-weight="normal" font-family="Arial" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-size: 18px; line-height: normal; font-family: Arial; fill-opacity: 1;"><tspan dy="243.7232142857143" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></tspan></text><text x="78.125" y="266.24999999999994" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#b3b3b3" font-size="18px" font-weight="normal" font-family="Arial" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-size: 18px; line-height: normal; font-family: Arial; fill-opacity: 1;"><tspan dy="6.234374999999943" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">0</tspan></text><text x="321.875" y="266.24999999999994" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#b3b3b3" font-size="18px" font-weight="normal" font-family="Arial" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-size: 18px; line-height: normal; font-family: Arial; fill-opacity: 1;"><tspan dy="6.234374999999943" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">100</tspan></text></svg> </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div id="now-playing" class="span6">
+            <h6> Now Playing </h6>
+            <h3 class="title" id="cur-title">  </h3>
+            <div class="artist" id="cur-artist">  </div>
+            <div class="my-gauge" id="cur-tempo-gauge"><svg height="100%" version="1.1" width="100%" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative;"><desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël 2.1.0</desc><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><filter id="cur-tempo-gauge-inner-shadow"><feOffset dx="0" dy="3"></feOffset><feGaussianBlur result="offset-blur" stdDeviation="5"></feGaussianBlur><feComposite operator="out" in="SourceGraphic" in2="offset-blur" result="inverse"></feComposite><feFlood flood-color="black" flood-opacity="0.2" result="color"></feFlood><feComposite operator="in" in="color" in2="inverse" result="shadow"></feComposite><feComposite operator="over" in="shadow" in2="SourceGraphic"></feComposite></filter></defs><path fill="#edebeb" stroke="none" d="M106.25,240L50,240A150,150,0,0,1,350,240L293.75,240A93.75,93.75,0,0,0,106.25,240Z" filter="url(#cur-tempo-gauge-inner-shadow)" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><path fill="#e9cb03" stroke="none" d="M106.25,240L50,240A150,150,0,0,1,153.6474508437579,97.34152255572698L171.0296567773487,150.83845159732937A93.75,93.75,0,0,0,106.25,240Z" filter="url(#cur-tempo-gauge-inner-shadow)" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="200" y="46.15384615384615" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#999999" font-size="30px" font-weight="bold" font-family="Arial" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: bold; font-size: 30px; line-height: normal; font-family: Arial; fill-opacity: 1;"><tspan dy="10.403846153846153" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Tempo</tspan></text><text x="200" y="214.2857142857143" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#010101" font-size="46px" font-weight="bold" font-family="Arial" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: bold; font-size: 46px; line-height: normal; font-family: Arial; fill-opacity: 1;"><tspan dy="15.941964285714306" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">120</tspan></text><text x="200" y="243.7232142857143" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#b3b3b3" font-size="18px" font-weight="normal" font-family="Arial" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-size: 18px; line-height: normal; font-family: Arial; fill-opacity: 1;"><tspan dy="243.7232142857143" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></tspan></text><text x="78.125" y="266.24999999999994" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#b3b3b3" font-size="18px" font-weight="normal" font-family="Arial" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-size: 18px; line-height: normal; font-family: Arial; fill-opacity: 1;"><tspan dy="6.234374999999943" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">100</tspan></text><text x="321.875" y="266.24999999999994" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#b3b3b3" font-size="18px" font-weight="normal" font-family="Arial" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-size: 18px; line-height: normal; font-family: Arial; fill-opacity: 1;"><tspan dy="6.234374999999943" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">150</tspan></text></svg> </div>
+        </div>
+
+        <div id="up-next" class="span6">
+            <h6> Up Next</h6>
+            <h3 class="title" id="next-title">  </h3>
+            <div class="artist" id="next-artist">  </div>
+            <!--<div class='my-gauge2' id="next-tempo-gauge"> </div>-->
+            <div class="my-gauge2" id="loading-gauge"><svg height="100%" version="1.1" width="100%" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative;"><desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël 2.1.0</desc><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><filter id="loading-gauge-inner-shadow"><feOffset dx="0" dy="3"></feOffset><feGaussianBlur result="offset-blur" stdDeviation="5"></feGaussianBlur><feComposite operator="out" in="SourceGraphic" in2="offset-blur" result="inverse"></feComposite><feFlood flood-color="black" flood-opacity="0.2" result="color"></feFlood><feComposite operator="in" in="color" in2="inverse" result="shadow"></feComposite><feComposite operator="over" in="shadow" in2="SourceGraphic"></feComposite></filter></defs><path fill="#edebeb" stroke="none" d="M106.25,240L50,240A150,150,0,0,1,350,240L293.75,240A93.75,93.75,0,0,0,106.25,240Z" filter="url(#loading-gauge-inner-shadow)" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><path fill="#d7a90b" stroke="none" d="M106.25,240L50,240A150,150,0,0,1,50,239.99999999999997L106.25,240A93.75,93.75,0,0,0,106.25,240Z" filter="url(#loading-gauge-inner-shadow)" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="200" y="46.15384615384615" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#999999" font-size="30px" font-weight="bold" font-family="Arial" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: bold; font-size: 30px; line-height: normal; font-family: Arial; fill-opacity: 1;"><tspan dy="10.403846153846153" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Next Track Status</tspan></text><text x="200" y="214.2857142857143" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#010101" font-size="46px" font-weight="bold" font-family="Arial" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: bold; font-size: 46px; line-height: normal; font-family: Arial; fill-opacity: 1;"><tspan dy="15.941964285714306" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">0</tspan></text><text x="200" y="243.7232142857143" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#b3b3b3" font-size="18px" font-weight="normal" font-family="Arial" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-size: 18px; line-height: normal; font-family: Arial; fill-opacity: 1;"><tspan dy="243.7232142857143" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></tspan></text><text x="78.125" y="266.24999999999994" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#b3b3b3" font-size="18px" font-weight="normal" font-family="Arial" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-size: 18px; line-height: normal; font-family: Arial; fill-opacity: 1;"><tspan dy="6.234374999999943" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">0</tspan></text><text x="321.875" y="266.24999999999994" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#b3b3b3" font-size="18px" font-weight="normal" font-family="Arial" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-size: 18px; line-height: normal; font-family: Arial; fill-opacity: 1;"><tspan dy="6.234374999999943" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">100</tspan></text></svg> </div>
+            <div id="info"> </div> 
+        </div>
+    </div>
+    <div id="up-next" class="">
+        <button class="btn btn-primary" id="pause-play" style="display: none;"> Play </button>
+    </div>
+</div>
+
+
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-3675615-27']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type =
+'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' :
+'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<script type="text/javascript">
+
+var cid = 'CAMVZJD142B9182222';
+var apiKey = 'WWM4H1RBU8OP0ZTQZ';
+var cacheApiCalls = true;
+
+var curSongIndex = 0;
+var curPlaylist = [];
+var remixer;
+var masterDriver = null;
+var masterPlayer;
+var slavePlayer;
+var curSongTime;
+var curSegueTime;
+
+var playTime = 20;
+var segueTime = 10;
+
+var npGauge;
+var mixGauge;
+var beatGauge;
+
+function info(s) {
+    $("#info").text(s);
+}
+
+function error(s) {
+    if (s.length == 0) {
+        $("#error").hide();
+    } else {
+        $("#error").text(s);
+        $("#error").show();
+    }
+}
+
+
+function loadTrack(song, trid) {
+    fetchAnalysis(song, trid);
+}
+
+
+function shutItAllDown() {
+    if (masterPlayer) {
+        masterPlayer.stop();
+        masterPlayer.setGain(1)
+        $("#cur-artist").text("");
+        $("#cur-title").text("");
+        $("#next-artist").text("");
+        $("#next-title").text("");
+    }
+    masterDriver = null;
+}
+
+
+
+function trackReady(t) {
+    var driver = Driver(t);
+    if (masterDriver == null) {
+        driver.setMaster(true);
+        masterDriver.start();
+    } else {
+        driver.setMaster(false);
+        masterDriver.setSlave(driver);
+    }
+}
+
+
+function findBestTrackTimes(t) {
+    var best = 1000000;
+    var bestIndex = 0;
+
+    for (var i = 0; i < t.analysis.beats.length; i++) {
+        var duration = 0;
+        var qlist = [];
+        var good = false;
+
+        for (j = i; j < t.analysis.beats.length; j++) {
+            var q = t.analysis.beats[j];
+            duration += q.duration;
+            qlist.push(q);
+            if (duration > 1.0 * curSongTime + curSegueTime) {
+                good = true;
+                break
+            }
+        }
+
+        if (good) {
+            deviation = getDeviation(qlist);
+            if (deviation < best) {
+                best = deviation;
+                bestIndex = i;
+            }
+        }
+    }
+    t.firstBeat  = t.analysis.beats[bestIndex];
+}
+
+
+function getDeviation(qlist) {
+    var sum = 0;
+    _.each(qlist, function(q) {
+        sum += q.duration;
+    });
+
+    var avg = sum / qlist.length;
+    var ss = 0;
+
+    _.each(qlist, function(q) {
+        var delta = q.duration - avg;
+        ss += delta * delta;
+    });
+    return ss / qlist.length;
+}
+
+function getSum(qlist) {
+    var sum = 0;
+    _.each(qlist, function(q) {
+        sum += q.duration;
+    });
+    return sum;
+}
+
+function getLoudness(beat) {
+    if ('oseg' in beat) {
+        return 60 + beat.oseg.loudness_max;
+    } else {
+        return 0;
+    }
+}
+
+
+function readyToPlay(t) {
+    if (t.status === 'ok') {
+        trackReady(t);
+        info("ready!");
+    } else {
+        info(t.status);
+    }
+}
+
+function gotTheAnalysis(song, profile) {
+    var status = get_status(profile);
+    if (status == 'complete') {
+        info("Loading track ...");
+        $("#next-tempo-gauge").hide();
+        //$("#loading-gauge").show();
+        remixer.remixTrack(profile.response.track, function(state, t, percent) {
+            track = t;
+            if (state == 1) {
+                info("song is loaded.");
+                t.song = song;
+                findBestTrackTimes(t);
+                setTimeout( function() { readyToPlay(t); }, 10);
+                //$("#next-tempo-gauge").show();
+                //$("#loading-gauge").hide();
+            } else if (state == 0) {
+                loadingGauge.refresh(percent);
+                if (percent >= 99) {
+                    info("Here we go ...");
+                } else {
+                    info( percent  + "% of track loaded ");
+                }
+            } else {
+                info('Trouble  ' + t.status);
+                loadNextSong();
+            }
+        });
+    } else if (status == 'error') {
+        info("Sorry, couldn't analyze that track");
+    }
+}
+
+
+function fetchAnalysis(song, trid) {
+    var url = 'http://static.echonest.com/infinite_jukebox_data/' + trid + '.json';
+    info('Fetching the analysis');
+    // showPlotPage(trid);
+    $.getJSON(url, function(data) { gotTheAnalysis(song, data); } )
+        .error( function() { 
+            info("Sorry, can't find info for that track");
+        });
+}
+
+function get_status(data) {
+    if (data.response.status.code == 0) {
+        return data.response.track.status;
+    } else {
+        return 'error';
+    }
+}
+
+function getAudioContext() {
+    if (window.webkitAudioContext) {
+        return new webkitAudioContext();
+    } else {
+        return new AudioContext();
+    }
+}
+
+function now() {
+    return new Date().getTime();
+}
+
+function cacheBuster() {
+    if (!cacheApiCalls) {
+        return now;
+    } else {
+        return 1;
+    }
+}
+
+function startRadio(seedArtist) {
+    shutItAllDown();
+    info("Getting playlist based upon " + seedArtist);
+    error('');
+    var url = 'http://developer.echonest.com/api/v4/' + 'playlist/static';
+    $.getJSON(url, {
+        api_key:apiKey,
+        type:'catalog',
+        artist:seedArtist,
+        seed_catalog:cid,
+        min_tempo:110,
+        min_energy:.4,
+        adventurousness:0,
+        distribution:'focused',
+        results:30,
+        sort:'tempo-asc',
+        bucket:['audio_summary', 'id:' + cid, 'tracks'],
+        limit:true,
+        _:cacheBuster()
+    }, 
+    function(data) {
+        info("Got the playlist ...");
+        var response = data['response'];
+        var songs = response['songs'];
+        curPlaylist = songs;
+        curSongIndex = 0;
+        loadNextSong();
+    }, 
+
+    function () {
+        error("Trouble getting music for that artist");
+    }
+    );
+}
+
+function loadNextSong() {
+    if (curSongIndex < curPlaylist.length) { 
+        var curSong = curPlaylist[curSongIndex++];
+        info('Loading ...' + curSong.title + ' by ' + curSong.artist_name);
+        var trid = curSong.foreign_ids[0].foreign_id.split(':')[2];
+        loadTrack(curSong, trid);
+        return true
+    } else {
+        return false;
+    }
+}
+
+
+function go() {
+    var seedArtist = $("#seed-artist").val();
+    document.location = "?seed_artist=" + seedArtist;
+}
+
+function goUrl() {
+    var seedArtist = $("#seed-artist").val();
+    if (masterDriver) {
+        masterDriver.stop();
+        masterDriver = null;
+    }
+    curSongTime = parseInt(playTime);
+    curSegueTime = parseInt(segueTime);
+    startRadio(seedArtist);
+}
+
+function urldecode(str) {
+   return decodeURIComponent((str+'').replace(/\+/g, '%20'));
+}
+
+function processParams() {
+    var params = {};
+    var q = document.URL.split('?')[1];
+    if(q != undefined){
+        q = q.split('&');
+        for(var i = 0; i < q.length; i++){
+            var pv = q[i].split('=');
+            var p = pv[0];
+            var v = pv[1];
+            params[p] = v;
+        }
+    }
+
+    if ('seed_artist' in params) {
+        var seedArtist = urldecode(params['seed_artist']);
+        $("#seed-artist").val(seedArtist);
+        goUrl();
+    }
+}
+
+
+function initUI()  {
+
+    $("#go-radio").click( function() {
+        go();
+    });
+
+    $("#seed-artist").change(function() {
+        go();
+    });
+
+    $("#pause-play").hide();
+    $("#pause-play").click(
+        function() {
+            if (masterDriver) {
+                if (masterDriver.isRunning()) {
+                    masterDriver.stop();
+                } else {
+                    masterDriver.start();
+                }
+            }
+        }
+    );
+
+    $('#cur-title').on('webkitAnimationEnd mozAnimationEnd oAnimationEnd animationEnd',
+        function() {
+            $("#cur-title").removeClass('animated bounceInRight');
+        });
+
+    $('#next-title').on('webkitAnimationEnd mozAnimationEnd oAnimationEnd animationEnd',
+        function() {
+            $("#next-title").removeClass('animated bounceInRight');
+        });
+
+
+    npGauge = new JustGage({
+        id: "cur-tempo-gauge",
+        value: 120,
+        min:100,
+        max:150,
+        title: "Tempo"
+    });
+
+    mixGauge = new JustGage({
+        id: "mix-gauge",
+        value: 100,
+        min:0,
+        max:100,
+        refreshAnimationTime: 300,
+        levelColors:  [ "#d7a90b", "#C8F902", "#00FF00" ],
+        title: "Mix"
+    });
+    
+
+
+    beatGauge = new JustGage({
+        id: "beat-gauge",
+        value: 100,
+        min:0,
+        max:100,
+        refreshAnimationTime: 300,
+        title: "Beats",
+    });
+
+    /*
+    nextGauge = new JustGage({
+        id: "next-tempo-gauge",
+        value: 120,
+        min:100,
+        max:150,
+        title: "Next Tempo"
+    });
+    */
+
+    loadingGauge= new JustGage({
+        id: "loading-gauge",
+        value: 0,
+        min:0,
+        max:100,
+        refreshAnimationTime: 3000,
+        levelColors:  [ "#d7a90b", "#C8F902", "#00FF00" ],
+        title: "Next Track Status"
+    });
+
+}
+
+function windowHidden() {
+    return document.webkitHidden;
+}
+
+
+function init() {
+    jQuery.ajaxSettings.traditional = true;  
+
+    if (window.webkitAudioContext === undefined && window.AudioContext === undefined) {
+        error("Sorry, this app needs advanced web audio. Your browser doesn't"
+            + " support it. Try the latest version of Chrome, Firefox (nightly)  or Safari");
+
+        hideAll();
+
+    } else {
+        initUI();
+        var context = getAudioContext();
+        remixer = createJRemixer(context, $);
+        masterPlayer = remixer.getPlayer();
+        slavePlayer = remixer.getPlayer();
+        processParams();
+    }
+}
+
+function ngain(g) {
+    var g = 1 - g;
+    g = g * g;
+    return 1 - g;
+}
+
+function Driver(track) {
+    var curQ = track.firstBeat;
+    var isMaster = false;
+    var slave = null;
+    var isRunning = false;
+    var beatCount = 0;
+    var totTime = 0;
+    var transitionBeats = 0;
+    var curTransitionBeat = 0;
+    var periodDelta = 0;
+    var nextTime = 0;
+    var lateCounter = 0;
+    var lateLimit = 4;
+    var earlyTime = .020;
+
+    // states:
+    //  intro, loading, ready-for-transition, transitioning, done, no more
+    var state = 'intro';
+
+    function stop () {
+        if (isMaster) {
+            masterPlayer.stop();
+            isRunning = false;
+        }
+    }
+
+    function releaseTrack() {
+        track.buffer = null;
+        track.song = null;
+        track.analysis = null;
+    }
+
+    function next() {
+        var q = curQ;
+        curQ = curQ.next;
+
+        if (curQ == null) {
+            curQ = track.firstBeat;
+        }
+        return q;
+    }
+
+
+    function process() {
+        beatCount += 1;
+        var q = next();
+
+        // waitTime if positve, represents how early we are
+        
+        var waitTime = nextTime - masterPlayer.curTime();
+
+        if (waitTime < 0) {
+            if (lateCounter++ > lateLimit && windowHidden()) {
+                error("Sorry, can't play music properly in the background. Try running in a separate window");
+                interface.stop();
+                return;
+            } 
+        } else {
+            lateCounter = 0;
+        }
+
+        if (waitTime < 0) {
+            waitTime = 0;
+        }
+
+        var nextDuration = masterPlayer.play(waitTime, q);
+        nextTime = nextDuration + waitTime + masterPlayer.curTime();
+        var nextDelay = (nextDuration + waitTime) - earlyTime;
+
+        setTimeout( function () { 
+            if (isRunning) {
+                process(); 
+            }
+        }, 1000 * nextDelay);
+
+        beatGauge.refresh(beatCount);
+
+        if (beatCount > 2 && state === 'intro') {
+            if (loadNextSong()) {
+                state = 'loading';
+            } else {
+                state = 'no more';
+            }
+        }
+
+        if (slave && state === 'ready-for-transition' && totTime >= curSongTime - curSegueTime) {
+            state = 'transitioning';
+
+            // see if the new song has good data
+            if (slave.curQ() === undefined) {
+                state = 'intro';
+                if (loadNextSong()) {
+                    state = 'loading';
+                } else {
+                    state = 'no more';
+                }
+            } else {
+                var periodDifference = slave.curQ().duration - q.duration;
+                transitionBeats = Math.round(curSegueTime / q.duration);
+                periodDelta = periodDifference / transitionBeats;
+                curTransitionBeat = 0;
+            }
+        }
+
+        if (slave && state === 'transitioning') {
+            var slaveVolume = curTransitionBeat / transitionBeats;
+            var masterVolume = 1 - slaveVolume;
+            var masterTempoFactor = (q.duration + periodDelta * curTransitionBeat) / q.duration
+
+            masterPlayer.setGain(ngain(masterVolume));
+            slavePlayer.setGain(ngain(slaveVolume));
+            mixGauge.refresh(Math.round(slaveVolume * 100));
+
+
+            masterPlayer.setSpeedFactor(masterTempoFactor);
+            npGauge.refresh(Math.round(track.audio_summary.tempo / masterTempoFactor));
+            var slaveDelay = slavePlayer.play(waitTime, slave.next());
+
+            if (curTransitionBeat++ >= transitionBeats) {
+                stop();
+                releaseTrack();
+                slave.setMaster(true);
+                masterPlayer.setSpeedFactor(1);
+                slavePlayer.setSpeedFactor(1);
+                slave.start(nextDuration + waitTime);
+                var swap = slavePlayer;
+                slavePlayer = masterPlayer;
+                masterPlayer = swap;
+                mixGauge.refresh(0);
+            }
+        }
+
+        totTime += nextDuration;
+    }
+
+    var interface = {
+        start: function(delay) {
+            lateCounter = 0;
+            setTimeout( function () { 
+                isRunning = true;
+                process(); 
+            }, 1000 * (delay - earlyTime));
+            $("#pause-play").show();
+            $("#pause-play").text('Pause');
+            error('');
+        },
+
+        stop: function() {
+            if (isMaster) {
+                isRunning = false;
+                masterPlayer.stop();
+                $("#pause-play").show();
+                $("#pause-play").text('Play');
+            }
+        },
+
+        isRunning: function() {
+            return isRunning;
+        },
+
+        next: function() {
+            return next();
+        },
+
+        curQ: function() {
+            return curQ;
+        },
+
+        process: function() {
+            process();
+        },
+
+        setMaster: function(master) {
+            isMaster = master;
+            if (isMaster) {
+                if (masterDriver && masterDriver.isRunning()) {
+                    masterDriver.stop();
+                }
+                masterDriver = this;
+                this.state = 'intro';
+                $("#cur-artist").text(track.song.artist_name);
+                $("#cur-title").text(track.song.title);
+                $("#cur-title").addClass('animated bounceInRight');
+
+                npGauge.refresh(Math.round(track.audio_summary.tempo));
+
+                $("#next-artist").text("");
+                $("#next-title").text("");
+            } else {
+                $("#next-artist").text(track.song.artist_name);
+                $("#next-title").text(track.song.title);
+                $("#next-title").addClass('animated bounceInRight');
+            }
+        },
+
+        setSlave: function(theSlave) {
+            slave = theSlave;
+            state = 'ready-for-transition';
+        }
+    }
+
+    return interface;
+}
+
+$(document).ready(function() {
+    init();
+});
+
+
+function ga_track(page, action, id) {
+    _gaq.push(['_trackEvent', page, action, id]);
+}
+</script>
+
+</body></html>
